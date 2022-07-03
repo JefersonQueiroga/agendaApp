@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "agendaApp",
+    "slug": "agendaApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
