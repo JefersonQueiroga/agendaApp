@@ -1,18 +1,18 @@
 import React,{useContext, useState} from 'react'
 import { AuthContext } from '../../contexts/Auth';
 import styled from 'styled-components/native';
-import { useForm, Controller } from "react-hook-form";
 import { TouchableOpacity,Text } from 'react-native';
-
+import { useForm, Controller } from "react-hook-form";
 
 export default function Form(){
    // usando os hooks 
    const{ control,handleSubmit,formState: { errors }  } = useForm()
+   
    const[login,setLogin] = useState('');
    const[password,setPassword] = useState('');
 
    function enviarForm(data){
-      alert(data.email)
+      alert( JSON.stringify(data))
    }
    return(
       <Container>
@@ -20,9 +20,10 @@ export default function Form(){
                 control={control}
                 name="nome"
                 rules={{
-                    required: "Nome é obrigatório"
+                    required: "Digite um nome",
+
                 }}
-                render={ ({ field: { value, onChange} }) =>( 
+               render={ ({ field: { value, onChange} }) =>( 
                     <Input value={value} onChangeText={onChange} /> 
                 )}
             /> 
@@ -31,6 +32,19 @@ export default function Form(){
             <Controller
                 control={control}
                 name="email"
+                rules={{
+                    required: "Digite um e-mail",
+                    
+                }}
+                render={ ({ field: { value, onChange} }) =>( 
+                    <Input value={value} onChangeText={onChange}/> 
+
+                )}
+            />
+
+            <Controller
+                control={control}
+                name="cidade"
                 render={ ({ field: { value, onChange} }) =>( 
                     <Input value={value} onChangeText={onChange}/> 
 
